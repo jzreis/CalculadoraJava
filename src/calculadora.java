@@ -123,7 +123,6 @@ public class calculadora extends JFrame implements ActionListener{
 			if(sinal.equals("")) {
 				sinal="dividir";
 				cont++;
-				numero1="";
 				visor.setText("/");
 			}
 		}if(e.getSource()==buttons[4]) {
