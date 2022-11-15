@@ -7,9 +7,12 @@ public class calculadora extends JFrame implements ActionListener{
 	
 	JTextField visor = new JTextField();
 	JButton[] buttons = new JButton[16];
+	
+	//variavel de controle 
 	int cont=1;
-	String sinal="",numero1="",numero2="";
-	double numeroAtual=0,proxNumero,resultado;
+	String sinal="",numero1="",numero2="",resultado;
+	
+	
 	public calculadora() {
 		super("Calculator");
 		frame();
@@ -117,10 +120,12 @@ public class calculadora extends JFrame implements ActionListener{
 				visor.setText(numero2);
 			}
 		}if(e.getSource()==buttons[3]) {
-			sinal="dividir";
-			cont++;
-			numero1="";
-			visor.setText("/");
+			if(sinal.equals("")) {
+				sinal="dividir";
+				cont++;
+				numero1="";
+				visor.setText("/");
+			}
 		}if(e.getSource()==buttons[4]) {
 			if(cont==1) {
 				numero1+="4";
@@ -146,9 +151,11 @@ public class calculadora extends JFrame implements ActionListener{
 				visor.setText(numero2);
 			}
 		}if(e.getSource()==buttons[7]) {
-			sinal="multiplicar";
-			cont++;
-			visor.setText("*");
+			if(sinal.equals("")) {
+				sinal="multiplicar";
+				cont++;
+				visor.setText("*");
+			}
 		}if(e.getSource()==buttons[8]) {
 			if(cont==1) {
 				numero1+="1";
@@ -174,9 +181,11 @@ public class calculadora extends JFrame implements ActionListener{
 				visor.setText(numero2);
 			}
 		}if(e.getSource()==buttons[11]) {
-			sinal="subtrair";
-			cont++;
-			visor.setText("-");
+			if(sinal.equals("")) {
+				sinal="subtrair";
+				cont++;
+				visor.setText("-");
+			}
 		}if(e.getSource()==buttons[12]) {
 			if(cont==1) {
 				numero1+="0";
@@ -198,17 +207,20 @@ public class calculadora extends JFrame implements ActionListener{
 				double num1=Double.parseDouble(numero1);
 				double num2=Double.parseDouble(numero2);
 				
-				resultado=num1+num2;
-				visor.setText(""+resultado);
+				resultado=String.valueOf(num1+num2);
+				visor.setText(resultado);
+				sinal="";
 				numero1="";
 				numero2="";
 				cont=1;
+				
 			}else if(sinal.equals("subtrair")) {
 				double num1=Double.parseDouble(numero1);
 				double num2=Double.parseDouble(numero2);
 				
-				resultado=num1-num2;
-				visor.setText(""+resultado);
+				resultado=String.valueOf(num1-num2);
+				visor.setText(resultado);
+				sinal="";
 				numero1="";
 				numero2="";
 				cont=1;
@@ -216,8 +228,9 @@ public class calculadora extends JFrame implements ActionListener{
 				double num1=Double.parseDouble(numero1);
 				double num2=Double.parseDouble(numero2);
 				
-				resultado=num1*num2;
-				visor.setText(""+resultado);
+				resultado=String.valueOf(num1/num2);
+				visor.setText(resultado);
+				sinal="";
 				numero1="";
 				numero2="";
 				cont=1;
@@ -225,19 +238,20 @@ public class calculadora extends JFrame implements ActionListener{
 				double num1=Double.parseDouble(numero1);
 				double num2=Double.parseDouble(numero2);
 				
-				resultado=num1*num2;
-				visor.setText(""+resultado);
+				resultado=String.valueOf(num1*num2);
+				visor.setText(resultado);
+				sinal="";
 				numero1="";
 				numero2="";
 				cont=1;
 			}
-			
 		}if(e.getSource()==buttons[15]) {
-			sinal="soma";
-			cont++;
-			visor.setText("+");
+			if(sinal.equals("")) {
+				sinal="soma";
+				cont++;
+				visor.setText("+");
+			}
 		}
-		
-		
 	}
 }
+
